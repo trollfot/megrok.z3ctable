@@ -5,6 +5,13 @@ from zope.testing import module
 import zope.component.eventtesting
 from zope import component
 from megrok import z3ctable 
+from grokcore.component.testing import grok_component as default_grok_component
+
+def grok_component(name, component, **kwargs):
+    # Because of undocumented but ok change in grokcore.component,
+    # grok_component doesn't work anymore in doctests.
+    component.__grok_module__ = 'megrok.z3ctable'
+    return default_grok_component(name, component, **kwargs)
 
    
 def moduleSetUp(test):
@@ -22,7 +29,7 @@ def zopeTearDown(test):
    
 def test_suite():
     optionflags = doctest.NORMALIZE_WHITESPACE | doctest.ELLIPSIS
-    globs = {}
+    globs = {'grok_component': grok_component}
     suite = unittest.TestSuite()
    
     suite.addTest(

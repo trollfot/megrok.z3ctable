@@ -32,7 +32,6 @@ First, we grok the package grokkers::
 
   >>> from megrok.z3ctable import testing
   >>> import grokcore.component as grok
-  >>> from grok.testing import grok_component
   >>> testing.grok('megrok.z3ctable')
   
 

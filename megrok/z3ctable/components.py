@@ -41,7 +41,7 @@ class TablePage(megrok.layout.Page, Table):
     def render(self):
         template = getattr(self, 'template', None)
         if template is not None:
-            return self._render_template()
+            return self.template.render(self)
         return self.renderTable() 
     
     render.base_method = True
