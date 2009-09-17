@@ -187,6 +187,8 @@ class MyNumbers(GetAttrColumn):
 class TableWithRender(TablePage):
     grok.context(Container)
 
+    def render(self):
+        return self.renderTable()
 
 class Title(NameColumn):
     """Display the name of the content item
