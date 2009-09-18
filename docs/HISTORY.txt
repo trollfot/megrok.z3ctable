@@ -1,6 +1,11 @@
 Changelog
 =========
 
+1.2.1 (2009-09-18)
+------------------
+
+* Add a new test for a template in a form [cklinger]
+
 1.2.0 (2009-09-17)
 ------------------
 
