@@ -74,13 +74,3 @@ class DumbColumn(Column):
 
     def renderCell(self, item):
         return u"I'm dumb"
-
-
-def test_suite():
-    from zope.testing import doctest
-    from megrok.z3ctable.ftests import FunctionalLayer
-    suite = doctest.DocTestSuite(
-        optionflags=doctest.NORMALIZE_WHITESPACE|doctest.ELLIPSIS
-        )
-    suite.layer = FunctionalLayer
-    return suite 

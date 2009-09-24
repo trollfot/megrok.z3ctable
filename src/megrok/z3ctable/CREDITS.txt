@@ -9,8 +9,11 @@ Authors
 
   - Christian Klinger <cklinger at novareto.de>
 
+
 Sponsors
 --------
+
+  - http://www.npai.fr
 
   - http://www.dolmen-project.org
 

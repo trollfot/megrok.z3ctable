@@ -1,11 +1,9 @@
-import grokcore.component as grok
-import grokcore.view as view 
-import megrok.layout
+# -*- coding: utf-8 -*-
 
-from z3c.table import table
-from z3c.table import column
-from z3c.table import interfaces
-from zope.publisher.publish import mapply
+import megrok.layout
+import grokcore.view as view 
+import grokcore.component as grok
+from z3c.table import table, column, interfaces
 
 
 class Table(table.Table):
@@ -14,7 +12,7 @@ class Table(table.Table):
 
 
 class TableView(view.View, Table):
-    """A view with renderd Tables
+    """A view that renders a Table.
     """
     grok.baseclass()
 
@@ -24,14 +22,11 @@ class TableView(view.View, Table):
     def render(self):
         return Table.render(self)
 
-    # Mark this Method as not needed
-    # We will get an error in the grokking Process
-    # if we do this.
     render.base_method = True
 
 
 class TablePage(megrok.layout.Page, Table):
-    """A Page with a rendered Table
+    """A Page that renders a Table.
     """
     grok.baseclass()
 
@@ -55,37 +50,37 @@ class Column(column.Column):
 
 
 class NameColumn(column.NameColumn, Column):
-    """ Name Column
+    """Name Column
     """
     grok.baseclass()
     
 
 class GetAttrColumn(column.GetAttrColumn, Column):
-    """ GetAttr Column
+    """GetAttr Column
     """
     grok.baseclass()
     
 
 class CheckBoxColumn(column.CheckBoxColumn, Column):
-    """ CheckBox Column
+    """CheckBox Column
     """
     grok.baseclass()
     
 
 class LinkColumn(column.LinkColumn, Column):
-    """ Link Column
+    """Link Column
     """
     grok.baseclass()
     
 
 class ModifiedColumn(column.ModifiedColumn, Column):
-    """ Modified Column
+    """Modified Column
     """
     grok.baseclass()
 
 
 class Values(grok.MultiAdapter):
-    """ Adapter for custom Value Implementation
+    """Adapter for custom Value Implementation
     """
     grok.baseclass()
     grok.provides(interfaces.IValues)

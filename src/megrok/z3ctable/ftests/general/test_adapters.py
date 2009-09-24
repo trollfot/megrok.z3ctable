@@ -206,13 +206,3 @@ class CustomName(GetAttrColumn):
     attrName = u"name"
     weight = 1
     header = u"Name"
-
-
-def test_suite():
-    from zope.testing import doctest
-    from megrok.z3ctable.ftests import FunctionalLayer
-    suite = doctest.DocTestSuite(
-        optionflags=doctest.NORMALIZE_WHITESPACE|doctest.ELLIPSIS
-        )
-    suite.layer = FunctionalLayer
-    return suite 

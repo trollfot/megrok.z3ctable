@@ -20,7 +20,7 @@ Now setup some items:
 
   >>> from zope.component import getMultiAdapter
   >>> from zope.publisher.browser import TestRequest
-  >>> table_view = getMultiAdapter((cont, TestRequest()), name=u"tableview")
+  >>> table_view = getMultiAdapter((cont, TestRequest()), name=u'tableview')
   >>> print table_view()
   <table>
     <thead>
@@ -42,7 +42,7 @@ Now setup some items:
   </table>
 
 
-  >>> tvwt = getMultiAdapter((cont, TestRequest()), name=u"tvwt")
+  >>> tvwt = getMultiAdapter((cont, TestRequest()), name=u'tvwt')
   >>> print tvwt()
   <html>
    <body>
@@ -70,7 +70,7 @@ Now setup some items:
 
 table renderd in a layout with an template
 
-  >>> tpil = getMultiAdapter((cont, TestRequest()), name=u"tablepageinlayout")
+  >>> tpil = getMultiAdapter((cont, TestRequest()), name=u'tablepageinlayout')
   >>> print tpil()
   <html>
    <body>
@@ -105,7 +105,7 @@ table renderd in a layout with an template
 
 table renderd in a layout with an render method
 
-  >>> twr = getMultiAdapter((cont, TestRequest()), name=u"tablewithrender")
+  >>> twr = getMultiAdapter((cont, TestRequest()), name=u'tablewithrender')
   >>> print twr()
   <html>
    <body>

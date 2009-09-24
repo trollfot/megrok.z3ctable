@@ -1,44 +1,44 @@
+# -*- coding: utf-8 -*-
+
+import re
+import os.path
 import unittest
-import doctest
-from zope.testing import cleanup
-from zope.testing import module
-import zope.component.eventtesting
-from zope import component
-from megrok import z3ctable 
-from grokcore.component.testing import grok_component as default_grok_component
 
-def grok_component(name, component, **kwargs):
-    # Because of undocumented but ok change in grokcore.component,
-    # grok_component doesn't work anymore in doctests.
-    component.__grok_module__ = 'megrok.z3ctable'
-    return default_grok_component(name, component, **kwargs)
+from pkg_resources import resource_listdir
+from zope.testing import doctest, module
+from zope.app.testing import functional
 
-   
-def moduleSetUp(test):
-    module.setUp(test, '__main__')
-	   
-def moduleTearDown(test):   
-    module.tearDown(test)
-    cleanup.cleanUp()
-   
-def zopeSetUp(test):
-    zope.component.eventtesting.setUp(test)
+ftesting_zcml = os.path.join(os.path.dirname(__file__), 'ftesting.zcml')
+FunctionalLayer = functional.ZCMLLayer(
+    ftesting_zcml, __name__, 'FunctionalLayer', allow_teardown=True
+    )
 
-def zopeTearDown(test):
-    cleanup.cleanUp()
-   
-def test_suite():
-    optionflags = doctest.NORMALIZE_WHITESPACE | doctest.ELLIPSIS
-    globs = {'grok_component': grok_component}
+
+def suiteFromPackage(name):
+    files = resource_listdir(__name__, name)
     suite = unittest.TestSuite()
-   
-    suite.addTest(
-        doctest.DocFileSuite(
-            '../README.txt',
-            optionflags=optionflags,
-            setUp=moduleSetUp,
-            tearDown=moduleTearDown,
-            globs=globs)
-        )
+    for filename in files:
+        if not filename.endswith('.py'):
+            continue
+        if filename == '__init__.py':
+            continue
 
+        dottedname = 'megrok.z3ctable.ftests.%s.%s' % (name, filename[:-3])
+        test = doctest.DocTestSuite(
+            dottedname,
+            optionflags=doctest.NORMALIZE_WHITESPACE|doctest.ELLIPSIS
+            )
+        test.layer = FunctionalLayer
+
+        suite.addTest(test)
+    return suite
+
+
+def test_suite():
+    suite = unittest.TestSuite()
+    for name in ['general']:
+        suite.addTest(suiteFromPackage(name))
+    readme = functional.FunctionalDocFileSuite('../README.txt')
+    readme.layer = FunctionalLayer
+    suite.addTest(readme)
     return suite
