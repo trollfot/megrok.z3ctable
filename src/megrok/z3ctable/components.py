@@ -47,46 +47,35 @@ class TablePage(megrok.layout.Page, Table):
     render.base_method = True
 
 
-class Column(column.Column, grok.MultiAdapter):
-    """ A basic Column
+class Column(column.Column):
+    """ A Nbasic Column
     """
-    grok.baseclass()
     grok.provides(interfaces.IColumn)
-    
 
-class NameColumn(column.NameColumn, grok.MultiAdapter):
+
+class NameColumn(column.NameColumn, Column):
     """ Name Column
     """
-    grok.baseclass()
-    grok.provides(interfaces.IColumn)
 
 
-class GetAttrColumn(column.GetAttrColumn, grok.MultiAdapter):
+class GetAttrColumn(column.GetAttrColumn, Column):
     """ GetAttr Column
     """
-    grok.baseclass()
-    grok.provides(interfaces.IColumn)
 
 
-class CheckBoxColumn(column.CheckBoxColumn, grok.MultiAdapter):
+class CheckBoxColumn(column.CheckBoxColumn, Column):
     """ CheckBox Column
     """
-    grok.baseclass()
-    grok.provides(interfaces.IColumn)
 
 
-class LinkColumn(column.LinkColumn, grok.MultiAdapter):
+class LinkColumn(column.LinkColumn, Column):
     """ Link Column
     """
-    grok.baseclass()
-    grok.provides(interfaces.IColumn)
 
 
-class ModifiedColumn(column.ModifiedColumn, grok.MultiAdapter):
+class ModifiedColumn(column.ModifiedColumn, Column):
     """ Modified Column
     """
-    grok.baseclass()
-    grok.provides(interfaces.IColumn)
 
 
 class Values(grok.MultiAdapter):

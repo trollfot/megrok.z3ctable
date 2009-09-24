@@ -125,7 +125,7 @@ from z3c.table.interfaces import ITable
 from megrok.z3ctable.ftests import Container, Content
 from megrok.z3ctable import (Table, Column, NameColumn, 
                              GetAttrColumn, CheckBoxColumn,
-			     LinkColumn, Values)
+			     LinkColumn, Values, table)
 
 
 class IMyTable(Interface):
@@ -139,7 +139,9 @@ class MyTable(Table):
 
 class Title(Column):
     grok.name('firstColumn') 
-    grok.adapts(None, None, IMyTable)
+    grok.context(Interface)
+    table(IMyTable)
+    #grok.adapts(None, None, IMyTable)
     weight = 10
     header = u'Title'
 
@@ -154,19 +156,22 @@ class NameTable(Table):
 
 class CheckBox(CheckBoxColumn):
     grok.name('checkBox')
-    grok.adapts(None, None, NameTable)
+    grok.context(Interface)
+    table(NameTable)
     weight = 0
 
 
 class Name(NameColumn):
     grok.name('secondColumn') 
-    grok.adapts(None, None, NameTable)
+    grok.context(Interface)
+    table(NameTable)
     weight = 1
 
 
 class Number(GetAttrColumn):
     grok.name('numberColumn')
-    grok.adapts(None, None, NameTable)
+    grok.context(Interface)
+    table(NameTable)
     attrName = u"number"
     weight = 2 
     header = u"Number"
@@ -174,7 +179,8 @@ class Number(GetAttrColumn):
 
 class Link(LinkColumn):
     grok.name('link')
-    grok.adapts(None, None, NameTable)
+    grok.context(Interface)
+    table(NameTable)
     weight = 3
     header = u"edit"
     linkName = u"edit"
@@ -195,7 +201,8 @@ class MyValues(Values):
 
 class CustomName(GetAttrColumn):
     grok.name('nColumn') 
-    grok.adapts(None, None, CustomValues)
+    grok.context(Interface)
+    table(CustomValues)
     attrName = u"name"
     weight = 1
     header = u"Name"

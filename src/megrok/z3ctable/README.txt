@@ -106,9 +106,12 @@ Column is a multi adapter, adapting the view, the request and the
 table. It permits a very flexible handling of the tables and the data
 representations. Let's define a simple Column :
 
+  >>> from zope.interface import Interface
   >>> from megrok.z3ctable import NameColumn
+  >>> from megrok.z3ctable import table
   >>> class Names(NameColumn):
-  ...     grok.adapts(None, None, SimpleTable)
+  ...     grok.context(Interface)
+  ...     table(SimpleTable)
 
 Now we grok our Column:
 

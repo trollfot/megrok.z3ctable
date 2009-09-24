@@ -12,6 +12,9 @@
   <include package="grokcore.component" file="meta.zcml"/>
   <include package="megrok.layout" file="meta.zcml"/>
   <include package="z3c.table"/>
+ 
+  
+  <include package="megrok.z3ctable" file="meta.zcml"/>
 
   <grok:grok package="megrok.z3ctable.ftests" />
 

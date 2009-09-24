@@ -137,7 +137,7 @@ import grokcore.view as view
 import grokcore.component as grok
 
 from zope.interface import Interface
-from megrok.z3ctable import (ITable, TableView, Column, 
+from megrok.z3ctable import (ITable, TableView, Column, table, 
                              GetAttrColumn, NameColumn, TablePage)
 from megrok.z3ctable.ftests import Container, Content
 
@@ -148,7 +148,8 @@ class TableView(TableView):
 
 
 class Name(NameColumn):
-    grok.adapts(None, None, TableView)
+    grok.context(Interface)
+    table(TableView)
 
 #
 
@@ -158,7 +159,8 @@ class TW(TableView):
 
 
 class NewName(NameColumn):
-    grok.adapts(None, None, TW)
+    grok.context(Interface)
+    table(TW)
 
 #
 
@@ -172,13 +174,15 @@ class TablePageInLayout(TablePage):
 
 class MyName(GetAttrColumn):
     grok.name('myname')
-    grok.adapts(None, None, TablePageInLayout)
+    grok.context(Interface)
+    table(TablePageInLayout)
     header = u"Name"
     weight = 1 
 
 class MyNumbers(GetAttrColumn):
     grok.name('mynumbers')
-    grok.adapts(None, None, TablePageInLayout)
+    grok.context(Interface)
+    table(TablePageInLayout)
     header = u"Number"
     weight = 2
 
@@ -193,7 +197,8 @@ class TableWithRender(TablePage):
 class Title(NameColumn):
     """Display the name of the content item
     """
-    grok.adapts(None, None, TableWithRender)
+    grok.context(Interface)
+    table(TableWithRender)
     header = u"Title"
 
 
