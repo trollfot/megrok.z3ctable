@@ -1,18 +1,19 @@
 import os.path
+import grokcore.component as grok
 import megrok.z3ctable
 
 from zope.app.container import btree
 from zope.app.testing.functional import ZCMLLayer
 
 
-class Container(btree.BTreeContainer):
-    """ Example Container should be a grok.Container
+class Container(grok.Context, btree.BTreeContainer):
+    """Example Container. 
     """
     __name__ = u'container'
 
 
-class Content(object):
-    """ Example Content should be a grok.Model
+class Content(grok.Context):
+    """Example Content.
     """
     def __init__(self, title, number):
         self.title = title
