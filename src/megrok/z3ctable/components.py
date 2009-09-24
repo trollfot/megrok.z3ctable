@@ -48,34 +48,40 @@ class TablePage(megrok.layout.Page, Table):
 
 
 class Column(column.Column):
-    """ A Nbasic Column
+    """ A basic Column
     """
+    grok.baseclass()
     grok.provides(interfaces.IColumn)
 
 
 class NameColumn(column.NameColumn, Column):
     """ Name Column
     """
-
+    grok.baseclass()
+    
 
 class GetAttrColumn(column.GetAttrColumn, Column):
     """ GetAttr Column
     """
-
+    grok.baseclass()
+    
 
 class CheckBoxColumn(column.CheckBoxColumn, Column):
     """ CheckBox Column
     """
-
+    grok.baseclass()
+    
 
 class LinkColumn(column.LinkColumn, Column):
     """ Link Column
     """
-
+    grok.baseclass()
+    
 
 class ModifiedColumn(column.ModifiedColumn, Column):
     """ Modified Column
     """
+    grok.baseclass()
 
 
 class Values(grok.MultiAdapter):
