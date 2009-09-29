@@ -41,19 +41,19 @@ Test Setup
 
 Let's create simple items to demonstrate the package. Here, the
 table will be the representation of a folder listing, displaying (in an
-ordered way), the content of a simple container. 
+ordered way), the content of a simple container::
 
   >>> from megrok.z3ctable.ftests import Container, Content
   >>> from zope.app.container import btree
   >>> from zope.publisher.browser import TestRequest
   >>> request = TestRequest()
 
-Let's create 2 dummy content :
+Let's create 2 dummy content::
 
   >>> christian = Content('Christian', 29)
   >>> trollfot = Content('Trollfot', 27) 
 
-Then, we instanciate a container and store the 2 dummies inside :
+Then, we instanciate a container and store the 2 dummies inside::
 
   >>> container = Container()
   >>> container['christian'] = christian
@@ -64,7 +64,7 @@ A simple Table
 --------------
 
 We define a simple table. Here, the component only registers itself,
-there's no logic defined inside.
+there's no logic defined inside::
 
   >>> from megrok.z3ctable import Table, Values 
   >>> from megrok.z3ctable import ITable
@@ -75,7 +75,7 @@ there's no logic defined inside.
   >>> ITable.implementedBy(Table)
   True
 
-Let's make an instance of the Table.
+Let's make an instance of the Table::
 
   >>> myTable = SimpleTable(container, request)
   >>> ITable.providedBy(myTable)
@@ -83,7 +83,7 @@ Let's make an instance of the Table.
 
 Now, we need to feed our table with contents. In order to provide a
 pluggable way to fetch the content, z3c.table proposes an adapter
-called "Values". It is in charge of getting in the data to display.
+called "Values". It is in charge of getting in the data to display::
 
   >>> class MyValues(Values):
   ...     grok.adapts(btree.BTreeContainer, None, SimpleTable)
@@ -92,7 +92,7 @@ called "Values". It is in charge of getting in the data to display.
   ...     def values(self):
   ...         return self.context.values()
 
-We grok the MyValues Adapter:
+We grok the MyValues Adapter::
 
   >>> grok_component('MyValues', MyValues)
   True
@@ -105,7 +105,7 @@ There is currently no output this is because the table itself contains
 no logic. The data is displayed by components called "Column". A
 Column is a multi adapter, adapting the view, the request and the
 table. It permits a very flexible handling of the tables and the data
-representations. Let's define a simple Column :
+representations. Let's define a simple Column::
 
   >>> from zope.interface import Interface
   >>> from megrok.z3ctable import NameColumn
@@ -114,12 +114,12 @@ representations. Let's define a simple Column :
   ...     grok.context(Interface)
   ...     table(SimpleTable)
 
-Now we grok our Column:
+Now we grok our Column::
 
   >>> grok_component('Names', Names)
   True
 
-and render the Table again.
+and render the Table again::
 
   >>> myTable.update()
   >>> print myTable.render()
