@@ -1,9 +1,21 @@
 from setuptools import setup, find_packages
 import os
 
-version = '1.3.0'
+version = '1.4.0'
 readme = open(os.path.join("src", "megrok", "z3ctable", "README.txt")).read()
 history = open(os.path.join("docs", "HISTORY.txt")).read()
+
+test_requires = [
+    'zope.app.appsetup',
+    'zope.app.testing',
+    'zope.browserpage',
+    'zope.configuration',
+    'zope.container',
+    'zope.interface',
+    'zope.security',
+    'zope.testing',
+    'zope.traversing',
+    ]
 
 setup(name='megrok.z3ctable',
       version=version,
@@ -28,12 +40,16 @@ setup(name='megrok.z3ctable',
       include_package_data=True,
       zip_safe=False,
       install_requires=[
-          'setuptools',
 	  'grokcore.component',
-          'grokcore.view',
-          'z3c.table',
-	  'megrok.layout',
+	  'megrok.layout >= 0.9',
+          'grokcore.view >= 1.12',
+          'martian',
+          'setuptools',
+          'z3c.table >= 0.8',
+          'zope.component',
+          'zope.publisher',
       ],
+      extras_require={'test': test_requires},
       entry_points="""
       # -*- Entry points: -*-
       """,

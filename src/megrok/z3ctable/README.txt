@@ -44,7 +44,7 @@ table will be the representation of a folder listing, displaying (in an
 ordered way), the content of a simple container::
 
   >>> from megrok.z3ctable.ftests import Container, Content
-  >>> from zope.app.container import btree
+  >>> from zope.container import btree
   >>> from zope.publisher.browser import TestRequest
   >>> request = TestRequest()
 

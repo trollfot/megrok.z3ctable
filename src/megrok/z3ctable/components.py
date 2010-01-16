@@ -16,6 +16,10 @@ class TableView(view.View, Table):
     """
     grok.baseclass()
 
+    def __init__(self, context, request):
+        view.View.__init__(self, context, request)
+        Table.__init__(self, context, request)
+
     def update(self):
         Table.update(self)
 
@@ -29,6 +33,10 @@ class TablePage(megrok.layout.Page, Table):
     """A Page that renders a Table.
     """
     grok.baseclass()
+
+    def __init__(self, context, request):
+        megrok.layout.Page.__init__(self, context, request)
+        Table.__init__(self, context, request)
 
     def update(self):
         Table.update(self)
@@ -95,3 +103,9 @@ class Values(grok.MultiAdapter):
         return NotImplementedError(
             """Your class must override the `Values` method."""
             )
+
+
+__all__ = ('Table', 'TableView', 'TablePage',
+           'NameColumn', 'Column', 'GetAttrColumn',
+           'CheckBoxColumn', 'LinkColumn', 'Values',
+           'ModifiedColumn')

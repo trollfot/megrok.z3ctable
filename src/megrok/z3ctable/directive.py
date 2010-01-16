@@ -4,4 +4,3 @@ class table(martian.Directive):
     scope = martian.CLASS_OR_MODULE
     store = martian.ONCE
     validate = martian.validateInterfaceOrClass
-

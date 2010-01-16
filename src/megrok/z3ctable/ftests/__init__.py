@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import grokcore.component as grok
-from zope.app.container import btree
+from zope.container import btree
 
 
 class Container(grok.Context, btree.BTreeContainer):
