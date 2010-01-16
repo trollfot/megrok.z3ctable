@@ -1,6 +1,12 @@
 Changelog
 =========
 
+1.4.0 (2010-01-16)
+------------------
+
+* Now using ztk versions and fixed it for z3c.table >= 0.8
+
+
 1.3.0 (2009-09-24)
 ------------------
 
