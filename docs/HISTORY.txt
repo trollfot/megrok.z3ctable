@@ -1,6 +1,18 @@
 Changelog
 =========
 
+1.4.1 (2010-02-21)
+------------------
+
+* Cleaned out all the zope.app dependencies. Removed unused imports
+  and re-structured the tests module. We are now using minimal
+  dependencies.
+
+* ``megrok.z3ctable`` now requires ``zope.component >= 3.9.1``. This
+  means you have to use the latest ZTK KGS in your buildout. This KGS
+  can be included via the groktoolkit.
+
+
 1.4.0 (2010-01-16)
 ------------------
 
