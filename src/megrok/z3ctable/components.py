@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import megrok.layout
-import grokcore.view as view 
+import grokcore.view as view
 import grokcore.component as grok
 from z3c.table import table, column, interfaces
 
@@ -45,8 +45,8 @@ class TablePage(megrok.layout.Page, Table):
         template = getattr(self, 'template', None)
         if template is not None:
             return self.template.render(self)
-        return self.renderTable() 
-    
+        return self.renderTable()
+
     render.base_method = True
 
 
@@ -61,25 +61,25 @@ class NameColumn(column.NameColumn, Column):
     """Name Column
     """
     grok.baseclass()
-    
+
 
 class GetAttrColumn(column.GetAttrColumn, Column):
     """GetAttr Column
     """
     grok.baseclass()
-    
+
 
 class CheckBoxColumn(column.CheckBoxColumn, Column):
     """CheckBox Column
     """
     grok.baseclass()
-    
+
 
 class LinkColumn(column.LinkColumn, Column):
     """Link Column
     """
     grok.baseclass()
-    
+
 
 class ModifiedColumn(column.ModifiedColumn, Column):
     """Modified Column
@@ -101,8 +101,7 @@ class Values(grok.MultiAdapter):
     @property
     def values(self):
         return NotImplementedError(
-            """Your class must override the `Values` method."""
-            )
+            """Your class must override the `Values` method.""")
 
 
 __all__ = ('Table', 'TableView', 'TablePage',

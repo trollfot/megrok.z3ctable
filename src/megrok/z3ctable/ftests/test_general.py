@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 
-import re
 import os.path
 import unittest
 
 from pkg_resources import resource_listdir
-from zope.testing import doctest, module
+from zope.testing import doctest
 from zope.app.testing import functional
 
 ftesting_zcml = os.path.join(os.path.dirname(__file__), 'ftesting.zcml')

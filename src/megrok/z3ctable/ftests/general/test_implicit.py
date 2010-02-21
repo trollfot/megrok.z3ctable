@@ -54,8 +54,8 @@ We can make the same test for the table::
 """
 
 import grokcore.component as grok
-from megrok.z3ctable import Table, Column, table
-from megrok.z3ctable.ftests import Container, Content
+from megrok.z3ctable import Table, Column
+from megrok.z3ctable.ftests import Container
 
 
 class DummyContainer(Container):

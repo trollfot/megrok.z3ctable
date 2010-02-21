@@ -133,15 +133,13 @@ table renderd in a layout with an render method
 
 """
 
-import grokcore.view as view 
 import grokcore.component as grok
-
 from zope.interface import Interface
-from megrok.z3ctable import (ITable, TableView, Column, table, 
-                             GetAttrColumn, NameColumn, TablePage)
-from megrok.z3ctable.ftests import Container, Content
-
+from megrok.z3ctable.ftests import Container
 from megrok.layout import Layout
+from megrok.z3ctable import (TableView, table, 
+                             GetAttrColumn, NameColumn, TablePage)
+
 
 class TableView(TableView):
     grok.context(Container)
@@ -151,7 +149,6 @@ class Name(NameColumn):
     grok.context(Interface)
     table(TableView)
 
-#
 
 class TW(TableView):
     grok.name('tvwt')
@@ -162,7 +159,6 @@ class NewName(NameColumn):
     grok.context(Interface)
     table(TW)
 
-#
 
 class TableLayout(Layout):
     grok.context(Interface)
@@ -179,6 +175,7 @@ class MyName(GetAttrColumn):
     header = u"Name"
     weight = 1 
 
+
 class MyNumbers(GetAttrColumn):
     grok.name('mynumbers')
     grok.context(Interface)
@@ -186,7 +183,6 @@ class MyNumbers(GetAttrColumn):
     header = u"Number"
     weight = 2
 
-#
 
 class TableWithRender(TablePage):
     grok.context(Container)
@@ -194,13 +190,13 @@ class TableWithRender(TablePage):
     def render(self):
         return self.renderTable()
 
+
 class Title(NameColumn):
     """Display the name of the content item
     """
     grok.context(Interface)
     table(TableWithRender)
     header = u"Title"
-
 
 
 def test_suite():

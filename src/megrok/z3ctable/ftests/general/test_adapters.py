@@ -121,7 +121,6 @@ Custom Values for the Table
 import grokcore.component as grok
 
 from zope.interface import Interface
-from z3c.table.interfaces import ITable
 from megrok.z3ctable.ftests import Container, Content
 from megrok.z3ctable import (Table, Column, NameColumn, 
                              GetAttrColumn, CheckBoxColumn,

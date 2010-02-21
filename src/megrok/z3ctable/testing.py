@@ -1,5 +1,8 @@
-from zope.configuration.config import ConfigurationMachine
+# -*- coding: utf-8 -*-
+
 from grokcore.component import zcml
+from zope.configuration.config import ConfigurationMachine
+
 
 def grok(module_name):
     config = ConfigurationMachine()

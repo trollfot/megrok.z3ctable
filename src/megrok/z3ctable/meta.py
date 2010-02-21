@@ -1,14 +1,12 @@
 # -*- coding: utf-8 -*-
 
 import martian
-import grokcore.view 
+import grokcore.view
 import megrok.z3ctable
-import grokcore.component 
+import grokcore.component
 
 from zope import component
-from martian.error import GrokError
 from z3c.table.interfaces import ITable
-from grokcore.component.scan import check_module_component
 from grokcore.component.scan import determine_module_component
 from grokcore.component.meta import default_provides as default
 from zope.publisher.interfaces.browser import IDefaultBrowserLayer
@@ -46,4 +44,3 @@ class ColumnGrokker(martian.ClassGrokker):
             args=(factory, for_, provides, name),
             )
         return True
-    
