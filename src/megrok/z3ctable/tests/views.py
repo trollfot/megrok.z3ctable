@@ -4,8 +4,8 @@ Sample data setup
 
 Let's create a sample container which we can use as our iterable context:
 
-  >>> from zope.app.testing.functional import getRootFolder
-  >>> root = getRootFolder()
+  >>> from zope.site.hooks import getSite
+  >>> root = getSite()
   >>> cont = Container()
 
 and set a parent for the cont:
@@ -13,6 +13,8 @@ and set a parent for the cont:
   >>> root['cont'] = cont
 
 Now setup some items:
+
+  >>> from megrok.z3ctable.tests import Content
 
   >>> cont[u'first'] = Content('First', 1)
   >>> cont[u'second'] = Content('Second', 2)
@@ -135,7 +137,7 @@ table renderd in a layout with an render method
 
 import grokcore.component as grok
 from zope.interface import Interface
-from megrok.z3ctable.ftests import Container
+from megrok.z3ctable.tests import Container
 from megrok.layout import Layout
 from megrok.z3ctable import (TableView, table, 
                              GetAttrColumn, NameColumn, TablePage)

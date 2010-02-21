@@ -4,8 +4,8 @@ Sample data setup
 
 Let's create a sample container which we can use as our iterable context:
 
-  >>> from zope.app.testing.functional import getRootFolder
-  >>> root = getRootFolder()
+  >>> from zope.site.hooks import getSite
+  >>> root = getSite()
   >>> container = Container()
 
 and set a parent for the container:
@@ -23,7 +23,12 @@ Now setup some items:
 
 Start with a very Basic Example
 
+  >>> from megrok.z3ctable import ITable
   >>> ITable.providedBy(table)
+  True
+
+  >>> from z3c.table.interfaces import ITable as IOriginalTable
+  >>> ITable is IOriginalTable
   True
 
   >>> table.update()
@@ -119,10 +124,10 @@ Custom Values for the Table
 """
 
 import grokcore.component as grok
-
 from zope.interface import Interface
-from megrok.z3ctable.ftests import Container, Content
-from megrok.z3ctable import (Table, Column, NameColumn, 
+from zope.publisher.interfaces.browser import IBrowserRequest
+from megrok.z3ctable.tests import Container, Content
+from megrok.z3ctable import (Table, Column, NameColumn,
                              GetAttrColumn, CheckBoxColumn,
 			     LinkColumn, Values, table)
 
@@ -140,14 +145,13 @@ class Title(Column):
     grok.name('firstColumn') 
     grok.context(Interface)
     table(IMyTable)
-    #grok.adapts(None, None, IMyTable)
+
     weight = 10
     header = u'Title'
 
     def renderCell(self, item):
         return u'Title: %s' % item.title
 
-###
 
 class NameTable(Table):
     pass
@@ -184,19 +188,19 @@ class Link(LinkColumn):
     header = u"edit"
     linkName = u"edit"
     linkContent = u"edit this item"
-###
+    
 
 class CustomValues(Table):
     pass
 
 
-from zope.publisher.interfaces.browser import IBrowserRequest
 class MyValues(Values):
     grok.adapts(Container, IBrowserRequest, CustomValues)
 
     @property
     def values(self):
         return [Content('eins', 1), Content('zwei', 2)]
+
 
 class CustomName(GetAttrColumn):
     grok.name('nColumn') 

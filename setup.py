@@ -6,8 +6,7 @@ readme = open(os.path.join("src", "megrok", "z3ctable", "README.txt")).read()
 history = open(os.path.join("docs", "HISTORY.txt")).read()
 
 test_requires = [
-    'zope.app.appsetup',
-    'zope.app.testing',
+    'zope.site',
     'zope.browserpage',
     'zope.configuration',
     'zope.container',
@@ -46,7 +45,7 @@ setup(name='megrok.z3ctable',
           'martian',
           'setuptools',
           'z3c.table >= 0.8',
-          'zope.component',
+          'zope.component >= 3.9.1',
           'zope.publisher',
       ],
       extras_require={'test': test_requires},

@@ -22,7 +22,7 @@ ways to create pages displaying a table :
     (see megrok.layout)
 
 For more information and more detailed examples please look in the
-ftests directory of this package.
+tests directory of this package.
 
 
 Getting started
@@ -43,7 +43,7 @@ Let's create simple items to demonstrate the package. Here, the
 table will be the representation of a folder listing, displaying (in an
 ordered way), the content of a simple container::
 
-  >>> from megrok.z3ctable.ftests import Container, Content
+  >>> from megrok.z3ctable.tests import Container, Content
   >>> from zope.container import btree
   >>> from zope.publisher.browser import TestRequest
   >>> request = TestRequest()

@@ -10,13 +10,12 @@
 
   <include package="grokcore.view"/>
   <include package="z3c.table"/>
-  <include package="zope.app.appsetup" />
   <include package="zope.container" />
   <include package="zope.security" />
   <include package="zope.traversing" />
   <include package="zope.traversing.browser" />
  
   <include package="megrok.z3ctable" file="meta.zcml"/>
-  <grok:grok package="megrok.z3ctable.ftests" />
+  <grok:grok package="megrok.z3ctable.tests" />
 
 </configure>
